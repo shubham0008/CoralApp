@@ -1,12 +1,17 @@
 package com.coralapp.coralapp;
 
+import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -39,8 +44,35 @@ public class CoralMapsActivity extends FragmentActivity implements OnMapReadyCal
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
+        LatLng sydney = new LatLng(37.4, -122.1);
+
+        Circle circle = mMap.addCircle(new CircleOptions()
+                .center(new LatLng(37.4, -122.1))
+                .radius(100000)
+                .strokeWidth(10)
+                .strokeColor(Color.GREEN)
+                .fillColor(Color.argb(128, 255, 0, 0))
+                .clickable(true));
+
+
+        mMap.setOnCircleClickListener(new GoogleMap.OnCircleClickListener() {
+            @Override
+            public void onCircleClick(Circle circle) {
+                Toast.makeText(CoralMapsActivity.this, "Circle working Bro", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+//        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+//            @Override
+//            public void onMapClick(LatLng latLng) {
+//                Toast.makeText(CoralMapsActivity.this, "IM working Bro", Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        CameraPosition target = CameraPosition.builder().target(sydney).zoom((float) 6.6).bearing(82).build();
+        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(target));
+
     }
 }
