@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">CoralApp</string>
     <string name="title_activity_cor_maps">Map</string>
+    <string name="title_activity_coral_maps">Map</string>
 </resources>
