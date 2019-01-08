@@ -36,13 +36,20 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBAxc9nbJziQ3JPdP9enVQbTxgpOuoGBmw" />
-
         <activity
             android:name=".FeatureActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".CoralMapsActivity"
-            android:label="@string/title_activity_coral_maps"></activity>
+            android:label="@string/title_activity_coral_maps"
+            android:parentActivityName=".FeatureActivity" />
+        <activity
+            android:name=".ReportActivity"
+            android:label="REPORT ALERT"
+            android:parentActivityName=".FeatureActivity"/>
+        <activity android:name=".HistoryActivity"
+            android:label="DIVE HISTORY"
+            android:parentActivityName=".FeatureActivity"/>
     </application>
 
 </manifest>
