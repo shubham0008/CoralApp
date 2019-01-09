@@ -13,12 +13,16 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class ReportActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 1000;
 
     private Location mLastLocation;
+    private DatabaseReference mDatabase;
+
 
     // Google client to interact with Google API
     private GoogleApiClient mGoogleApiClient;
@@ -39,6 +43,8 @@ public class ReportActivity extends AppCompatActivity implements GoogleApiClient
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
 
         // First we need to check availability of play services
         if (checkPlayServices()) {
@@ -52,6 +58,7 @@ public class ReportActivity extends AppCompatActivity implements GoogleApiClient
                 // Show location button click listener
                 displayLocation();
                 Toast.makeText(ReportActivity.this, "" + latitude + " " + longitude, Toast.LENGTH_SHORT).show();
+
             }
         });
     }
@@ -67,6 +74,11 @@ public class ReportActivity extends AppCompatActivity implements GoogleApiClient
         if (mLastLocation != null) {
             latitude = mLastLocation.getLatitude();
             longitude = mLastLocation.getLongitude();
+
+            mDatabase.child("Report").child("ufid2").child("Lat").setValue(latitude);
+            mDatabase.child("Report").child("ufid2").child("Long").setValue(longitude);
+
+
 //            Log.d(getPackageName(), "displayLocation: " + k);
         } else {
             Toast.makeText(ReportActivity.this, "Couldn't get the location. Make sure location is enabled on the device", Toast.LENGTH_SHORT).show();

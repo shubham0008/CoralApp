@@ -1,9 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HistoryActivity">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:text="15"
+        android:id="@+id/count"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textSize="100dp"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:text="Days left to Complete"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textSize="24dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/days"
+        android:layout_below="@id/count"
+        />
+        <TextView
+            android:text="Coral Name"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="30dp"
+            android:id="@+id/name"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/days"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:text="North Reef"
+            android:textColor="@color/colorPrimary"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="24dp"
+            android:id="@+id/ref"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/name"
+            />
+        <TextView
+            android:text="Location"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="30dp"
+            android:id="@+id/LatLong"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/ref"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:text="13.11 Lat, 92.71 Long"
+            android:textColor="@color/colorPrimary"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="24dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/LatLong"
+            />
+    </RelativeLayout>
+
+
+</RelativeLayout>
